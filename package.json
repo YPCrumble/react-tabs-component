@@ -15,7 +15,7 @@
   "main": "Tabs.js",
   "dependencies": {
     "envify": "^3.4.0",
-    "react": "^0.12.0",
+    "react": "^0.13.0",
     "reactify": "^1.1.0"
   },
   "author": "Max Heiber",
@@ -36,9 +36,8 @@
     ]
   },
   "devDependencies": {
-    "jest-cli": "0.4.0",
-    "react-tools": "0.13.1",
-    "reactify": "1.1.0"
+    "jest-cli": "git+https://github.com/YPCrumble/jest",
+    "react-tools": "0.13.1"
   },
   "bugs": {
     "url": "https://github.com/mheiber/react-tabs-component/issues"

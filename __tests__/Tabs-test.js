@@ -42,7 +42,6 @@ describe('Tabs',function(){
 
 
 	});
-
 	it('Displays only the default tab\'s content if defaultTabNum is provided',function(){
 
 		var main=getTabs();
