@@ -59,21 +59,21 @@ var Tabs=React.createClass({
 		var tabs=this.props.tabNames.map(function(tabName,tabNum){
 			var isActive= tabNum===this.state.activeTabNum;
 			return (
-				<span 
+				<li 
 					key={'tab-'+tabNum}
 					className={isActive? activeTabClassName : tabClassName }
 					data-tabnum={tabNum}
 					onClick={this._change}
 				>
-					{tabName}
-				</span>
+				    <a>{tabName}</a>
+				</li>
 
 					);
 		}.bind(this));
 
 		return (
 			<div>
-			<nav className={classPrefix+'tab-container'}>{tabs}</nav>
+			<ul className={classPrefix+'tab-container'}>{tabs}</ul>
 			{activeTabContent}
 			</div>
 
