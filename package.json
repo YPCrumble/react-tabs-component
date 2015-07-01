@@ -25,7 +25,8 @@
     ]
   },
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "dtest": "node-debug --harmony ./node_modules/jest-cli/bin/jest.js --runInBand"
   },
   "jest": {
     "rootDir": "./",
@@ -37,7 +38,7 @@
   },
   "devDependencies": {
     "jest-cli": "git+https://github.com/YPCrumble/jest",
-    "react-tools": "0.13.1"
+    "react-tools": "^0.13.0"
   },
   "bugs": {
     "url": "https://github.com/mheiber/react-tabs-component/issues"

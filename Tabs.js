@@ -3,6 +3,7 @@ var React=require('react');
 var getChildrenArray=function(context){
 	var children=[];
 	React.Children.forEach(context.props.children,function(child){
+		debugger;
 		children.push(child);
 	});
 	return children;
@@ -36,6 +37,7 @@ var Tabs=React.createClass({
 		return this.state.activeTabNum;
 	},
 	_change:function(e){
+		e.preventDefault();
 		var oldActiveTabNum=this.state.activeTabNum;
 		var newActiveTabNum=parseInt(e.target.getAttribute('data-tabnum'));
 
@@ -54,7 +56,7 @@ var Tabs=React.createClass({
 		var activeTabContent=children[this.state.activeTabNum];
 		var classPrefix=this.props.classPrefix;
 		var tabClassName=classPrefix+'tab';
-		var activeTabClassName=tabClassName+' '+classPrefix+'active-tab';
+		var activeTabClassName=tabClassName+' '+classPrefix+'active';
 
 		var tabs=this.props.tabNames.map(function(tabName,tabNum){
 			var isActive= tabNum===this.state.activeTabNum;
@@ -62,10 +64,13 @@ var Tabs=React.createClass({
 				<li 
 					key={'tab-'+tabNum}
 					className={isActive? activeTabClassName : tabClassName }
-					data-tabnum={tabNum}
-					onClick={this._change}
 				>
-				    <a>{tabName}</a>
+				    <a 
+				        data-tabnum={tabNum}
+				        onClick={this._change}
+				    >
+				        {tabName}
+				    </a>
 				</li>
 
 					);
@@ -73,7 +78,7 @@ var Tabs=React.createClass({
 
 		return (
 			<div>
-			<ul className={classPrefix+'tab-container'}>{tabs}</ul>
+			<ul className={classPrefix+'tab-container nav nav-tabs nav-justified'}>{tabs}</ul>
 			{activeTabContent}
 			</div>
 

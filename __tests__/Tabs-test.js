@@ -53,7 +53,7 @@ describe('Tabs',function(){
 
 	it('Creates and displays a tab for each tabName passed in',function(){
 		var main=getTabs();
-		var tabs=TestUtils.scryRenderedDOMComponentsWithTag(main,'span');
+		var tabs=TestUtils.scryRenderedDOMComponentsWithTag(main,'li');
 		expect(tabs.length).toEqual(3);
 
 	});
@@ -61,41 +61,41 @@ describe('Tabs',function(){
 	it("All tabs have className this.props.classPrefix+'tab'",function(){
 
 		var main=getTabs(); //passes prop classPrefix={'tabs-'}
-		var tabs=TestUtils.scryRenderedDOMComponentsWithTag(main,'span');
+		var tabs=TestUtils.scryRenderedDOMComponentsWithTag(main,'li');
 		
 		tabs.forEach(function(tab){
 			var tabNode=tab.getDOMNode();
-			expect(tabNode.className).toContain('tabs-tab');
+			expect(tabNode.className).toContain('tab');
 
 		});
 		
 	});
 	
-	it("Active tab has className this.props.classPrefix+'active-tab'",function(){
+	it("Active tab has className this.props.classPrefix+'active'",function(){
 
 		var main=getTabs(); //passes prop classPrefix={'tabs-'}
 
-		var tabs=TestUtils.scryRenderedDOMComponentsWithTag(main,'span');
+		var tabs=TestUtils.scryRenderedDOMComponentsWithTag(main,'a');
 		
-		var tabB=TestUtils.scryRenderedDOMComponentsWithTag(main,'span')[1];
+		var tabB=TestUtils.scryRenderedDOMComponentsWithTag(main,'li')[1];
 
 		tabBNode=tabB.getDOMNode();
-		expect(tabBNode.className).toContain('tabs-active-tab');
+		expect(tabBNode.className).toContain('active');
 	});
 
 	it("Tab container has className this.props.classPrefix+'tab-container'",function(){
 
 		var main=getTabs(); //passes prop classPrefix={'tabs-'}
 
-		var tabContainer=TestUtils.findRenderedDOMComponentWithTag(main,'nav');
+		var tabContainer=TestUtils.findRenderedDOMComponentWithTag(main,'ul');
 		var tabContainerNode=tabContainer.getDOMNode();
-		expect(tabContainerNode.className).toContain('tabs-tab-container');
+		expect(tabContainerNode.className).toContain('tab-container');
 
 	});
 
 	it('Clicking a tab switches to the content for that tab',function(){
 		var main=getTabs();
-		var tabC=TestUtils.scryRenderedDOMComponentsWithTag(main,'span')[2];
+		var tabC=TestUtils.scryRenderedDOMComponentsWithTag(main,'a')[2];
 		Simulate.click(tabC);
 		var section=TestUtils.findRenderedDOMComponentWithTag(main,'section');
 		expect(section.getDOMNode().textContent).toEqual('Tab C Content');		
@@ -118,7 +118,7 @@ describe('Tabs',function(){
 				<section>Tab C Content</section>
 			</Tabs>
 		);
-		var tabC=TestUtils.scryRenderedDOMComponentsWithTag(main,'span')[2];
+		var tabC=TestUtils.scryRenderedDOMComponentsWithTag(main,'a')[2];
 		Simulate.click(tabC);
 		//var section=TestUtils.findRenderedDOMComponentWithTag(main,'section');
 		//expect(section.getDOMNode().textContent).toEqual('Tab C Content');	
@@ -142,7 +142,7 @@ describe('Tabs',function(){
 				<section>Tab C Content</section>
 			</Tabs>
 		);
-		var tabB=TestUtils.scryRenderedDOMComponentsWithTag(main,'span')[1];
+		var tabB=TestUtils.scryRenderedDOMComponentsWithTag(main,'a')[1];
 		Simulate.click(tabB);
 		//var section=TestUtils.findRenderedDOMComponentWithTag(main,'section');
 		//expect(section.getDOMNode().textContent).toEqual('Tab C Content');	
@@ -168,7 +168,7 @@ describe('Tabs',function(){
 				<section>Tab C Content</section>
 			</Tabs>
 		);
-		var tabB=TestUtils.scryRenderedDOMComponentsWithTag(main,'span')[1];
+		var tabB=TestUtils.scryRenderedDOMComponentsWithTag(main,'a')[1];
 		Simulate.click(tabB);
 		//var section=TestUtils.findRenderedDOMComponentWithTag(main,'section');
 		//expect(section.getDOMNode().textContent).toEqual('Tab C Content');	
